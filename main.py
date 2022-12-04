@@ -5,7 +5,7 @@ import folium
 def get_info_by_ip(ip='127.0.0.1'):
     try:
         response = requests.get(url=f'http://ip-api.com/json/{ip}').json()
-        # print(response)
+         print(response)
 
         data = {
             '[IP]': response.get('query'),
