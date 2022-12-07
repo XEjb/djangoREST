@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from bros.views import BrosAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/broslist/', BrosAPIView.as_view())
 ]
