@@ -19,5 +19,6 @@ from bros.views import BrosAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/v1/broslist/', BrosAPIView.as_view())
+    path('api/v1/broslist/', BrosAPIView.as_view()),
+    path('api/v1/broslist/<int:pk>/', BrosAPIView.as_view()),
 ]
