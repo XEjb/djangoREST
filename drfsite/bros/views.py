@@ -7,6 +7,11 @@ from .models import Bros
 from .serializers import BrosSerializer
 
 
+class BrosAPIList(generics.ListCreateAPIView):
+    queryset = Bros.objects.all()
+    serializer_class = BrosSerializer
+
+
 class BrosAPIView(APIView):
     def get(self, request):
         w = Bros.objects.all()
