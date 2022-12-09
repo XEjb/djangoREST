@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from bros.views import BrosAPIView, BrosAPIList
+from bros.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/broslist/', BrosAPIList.as_view()),
-    path('api/v1/broslist/<int:pk>/', BrosAPIList.as_view()),
+    path('api/v1/broslist/<int:pk>/', BrosAPIUpdate.as_view()),
+    path('api/v1/brosdetail/<int:pk>/', BrosAPIDetailView.as_view()),
 ]
