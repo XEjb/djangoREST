@@ -2,53 +2,27 @@ from django.forms import model_to_dict
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import generics
+from rest_framework import generics, viewsets
+
 from .models import Bros
 from .serializers import BrosSerializer
 
 
-class BrosAPIList(generics.ListCreateAPIView):
+class BrosViewSet(viewsets.ModelViewSet):
     queryset = Bros.objects.all()
     serializer_class = BrosSerializer
 
 
-class BrosAPIUpdate(generics.UpdateAPIView):
-    queryset = Bros.objects.all()
-    serializer_class = BrosSerializer
-
-
-class BrosAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Bros.objects.all()
-    serializer_class = BrosSerializer
-
-
-# class BrosAPIView(APIView):
-#     def get(self, request):
-#         w = Bros.objects.all()
-#         return Response({'posts': BrosSerializer(w, many=True).data})
+# class BrosAPIList(generics.ListCreateAPIView):
+#     queryset = Bros.objects.all()
+#     serializer_class = BrosSerializer
 #
-#     def post(self, request):
-#         serializer = BrosSerializer(data=request.data)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
 #
-#         return Response({'post': serializer.data})
+# class BrosAPIUpdate(generics.UpdateAPIView):
+#     queryset = Bros.objects.all()
+#     serializer_class = BrosSerializer
 #
-#     def put(self, request, *args, **kwargs):
-#         pk = kwargs.get("pk", None)
-#         if not pk:
-#             return Response({"error": "Method PUT not allowed"})
 #
-#         try:
-#             instance = Bros.objects.get(pk=pk)
-#         except:
-#             return Response({"error": "Object does not exists"})
-#
-#         serializer = BrosSerializer(data=request.data, instance=instance)
-#         serializer.is_valid(raise_exception=True)
-#         serializer.save()
-#         return Response({"post": serializer.data})
-
-# class BrosAPIView(generics.ListAPIView):
+# class BrosAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
 #     queryset = Bros.objects.all()
 #     serializer_class = BrosSerializer
